@@ -239,6 +239,10 @@ class SurveyMonkey
         $params['title'] = $surveyTitle;
         $params['from_survey_id'] = $from_survey_id;
 
+        if (!isset($params['nickname'])) {
+            $params['nickname'] = '';
+        }
+
         return $this->run('surveys', $params, 'POST');
     }
 
