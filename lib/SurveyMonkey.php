@@ -234,13 +234,10 @@ class SurveyMonkey
      * @param array $params optional request array
      * @return array Results
      */
-    public function createFlow($surveyTitle, $from_survey_id, $params = array())
+    public function createFlow($params = array())
     {
-        $params['title'] = $surveyTitle;
-        $params['from_survey_id'] = $from_survey_id;
-
-        if (!isset($params['nickname'])) {
-            $params['nickname'] = $surveyTitle;
+        if (!isset($params['nickname']) && isset($params['title'])) {
+            $params['nickname'] = $params['title'];
         }
 
         return $this->run('surveys', $params, 'POST');
