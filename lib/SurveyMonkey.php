@@ -335,6 +335,17 @@ class SurveyMonkey
     {
         return $this->run('surveys/' . $surveyId . '/collectors', $params, 'GET');
     }
+
+    /**
+     * Retrieves a single response
+     * @param string $surveyId Survey ID
+     * @param string $responseId Response ID
+     * @return array Results
+     */
+    public function getResponse($surveyId, $responseId)
+    {
+        return $this->run('surveys/' . $surveyId . '/responses/' . $responseId . '/details', array(), 'GET');
+    }
 }
 
 /**

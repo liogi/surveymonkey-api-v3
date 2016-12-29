@@ -98,6 +98,17 @@ public function getRespondentList($surveyId, $params = array()){}
 public function getResponses($surveyId, $params = []){}
 ```
 
+**getResponse**
+```
+/**
+ * Retrieves a single response
+ * @param string $surveyId Survey ID
+ * @param string $responseId Response ID
+ * @return array Results
+ */
+public function getResponse($surveyId, $responseId){}
+```
+
 **createCollector**
 ```
 /**
