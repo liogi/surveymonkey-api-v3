@@ -136,6 +136,42 @@ public function createFlow($surveyTitle, $from_survey_id, $params = array()){}
  */
 public function updateSurvey($surveyID, $params = array()){}
 ```
+
+**createMessage**
+```
+/**
+ * Creates a message
+ * @see https://developer.surveymonkey.com/api/v3/#collectors-id-messages
+ * @param string $collectorIdID Colector ID
+ * @param array $params optional request array
+ * @return array Results
+ */
+```
+
+**createBulkRecipients**
+```
+/**
+ * Creates multiple recipients for a message
+ * @see https://developer.surveymonkey.com/api/v3/#collectors-id-messages-id-recipients-bulk3/#collectors-id-messages
+ * @param string $collectorId Colector ID
+ * @param string $messageId Message ID
+ * @param array $params optional request array
+ * @return array Results
+ */
+```
+
+**sendMessage**
+```
+/**
+ * Send or schedule to send an existing message to all message recipients.
+ * @see https://developer.surveymonkey.com/api/v3/#collectors-id-messages-id-send
+ * @param string $collectorId Colector ID
+ * @param string $messageId Message ID
+ * @param array $params optional request array
+ * @return array Results
+ */
+```
+
 API version
 -----------
 v3
