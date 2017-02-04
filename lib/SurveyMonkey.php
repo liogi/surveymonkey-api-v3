@@ -335,6 +335,44 @@ class SurveyMonkey
     {
         return $this->run('surveys/' . $surveyId . '/collectors', $params, 'GET');
     }
+
+    /**
+     * Creates a message
+     * @see https://developer.surveymonkey.com/api/v3/#collectors-id-messages
+     * @param string $collectorIdID Colector ID
+     * @param array $params optional request array
+     * @return array Results
+     */
+    public function createMessage($collectorId, $params = array())
+    {
+        return $this->run('collectors/' . $collectorId . '/messages', $params, 'POST');
+    }
+
+    /**
+     * Creates multiple recipients for a message
+     * @see https://developer.surveymonkey.com/api/v3/#collectors-id-messages-id-recipients-bulk3/#collectors-id-messages
+     * @param string $collectorId Colector ID
+     * @param string $messageId Message ID
+     * @param array $params optional request array
+     * @return array Results
+     */
+    public function createBulkRecipients($collectorId, $messageId, $params = array())
+    {
+        return $this->run('collectors/' . $collectorId . '/messages/' . $messageId . '/recipients/bulk', $params, 'POST');
+    }
+
+    /**
+     * Send or schedule to send an existing message to all message recipients.
+     * @see https://developer.surveymonkey.com/api/v3/#collectors-id-messages-id-send
+     * @param string $collectorId Colector ID
+     * @param string $messageId Message ID
+     * @param array $params optional request array
+     * @return array Results
+     */
+    public function sendMessage($collectorId, $messageId, $params = array())
+    {
+        return $this->run('collectors/' . $collectorId . '/messages/' . $messageId . '/send', $params, 'POST');
+    }
 }
 
 /**
