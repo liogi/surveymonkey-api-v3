@@ -182,13 +182,16 @@ class SurveyMonkey
 
         if ($type == 'GET') {
             $request_url = $this->parametersGETRequest($request_url, $params);
-        } else {
-
-            $type == 'POST' ? curl_setopt($this->conn, CURLOPT_POST, true) : curl_setopt($this->conn, CURLOPT_CUSTOMREQUEST, $type);
-
+        } else if ($type == 'POST') {
+            curl_setopt($this->conn, CURLOPT_POST, true);
             if (!empty($params)) {
                 curl_setopt($this->conn, CURLOPT_POSTFIELDS, json_encode($params));
+            } else {
+                // json_encode doesn't return the format SurveyMonkey accepts for empty params
+                curl_setopt($this->conn, CURLOPT_POSTFIELDS, '{}');
             }
+        } else {
+            curl_setopt($this->conn, CURLOPT_CUSTOMREQUEST, $type);
         }
 
         curl_setopt($this->conn, CURLOPT_URL, $request_url);  // URL to request to
