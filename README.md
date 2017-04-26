@@ -16,11 +16,11 @@ All methods return an array containing a **success** boolean, and the **data** -
 Advanced
 ----
 ```
-$SM = new SurveyMonkey("myApiKey" , "myAccessToken", 
+$SM = new SurveyMonkey("myApiKey" , "myAccessToken",
     array(  // Override default API options (quite useless at the moment)
         'protocol' => 'http',                       // will not work.. they require SSL
         'hostname' => 'fake-api.surveymonkey.net'   // will also not work..
-    ), 
+    ),
     array(  // CURL override options
         CURLOPT_SSL_VERIFYPEER => false     // Better add cacert.pam, no?
         // ...<Any CURLOPT>...
@@ -73,6 +73,39 @@ public function getSurveyDetails($surveyId, $params = array()){}
  * @return array Results
  */
 public function getCollectorList($surveyId, $params = array()){}
+```
+
+**getContacts**
+```
+/**
+ * Returns a list of contacts
+ * @see https://developer.surveymonkey.com/api/v3/#contacts-and-contact-lists
+ * @param array $params optional request array
+ * @return array Results
+ */
+public function getContacts($params = array()){}
+```
+
+**getContactDetails**
+```
+/**
+ * Gets the details for a contact
+ * @see https://developer.surveymonkey.com/api/v3/#contacts-and-contact-lists
+ * @param string $contactId Contact ID
+ * @return array Result
+ */
+public function getContactDetails($contactId){}
+```
+
+**deleteContact**
+```
+/**
+ * Deletes a contact
+ * @see https://developer.surveymonkey.com/api/v3/#contacts-and-contact-lists
+ * @param string $contactId Contact ID
+ * @return array Result
+ */
+public function deleteContact($contactId){}
 ```
 
 **getRespondentList**
