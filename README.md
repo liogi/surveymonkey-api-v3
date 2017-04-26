@@ -16,11 +16,11 @@ All methods return an array containing a **success** boolean, and the **data** -
 Advanced
 ----
 ```
-$SM = new SurveyMonkey("myApiKey" , "myAccessToken", 
+$SM = new SurveyMonkey("myApiKey" , "myAccessToken",
     array(  // Override default API options (quite useless at the moment)
         'protocol' => 'http',                       // will not work.. they require SSL
         'hostname' => 'fake-api.surveymonkey.net'   // will also not work..
-    ), 
+    ),
     array(  // CURL override options
         CURLOPT_SSL_VERIFYPEER => false     // Better add cacert.pam, no?
         // ...<Any CURLOPT>...
@@ -136,6 +136,31 @@ public function createFlow($surveyTitle, $from_survey_id, $params = array()){}
  */
 public function updateSurvey($surveyID, $params = array()){}
 ```
+
+**getMessageRecipients**
+```
+/**
+ * Gets recipient summaries for all recipients of a message
+ * @see https://developer.surveymonkey.com/api/v3/#collectors-id-messages-id-recipients
+ * @param string $collectorId Collector ID
+ * @param string $collectorId Message ID
+ * @return array Result
+ */
+public function getMessageRecipients($collectorId, $messageId){}
+```
+
+**getRecipient**
+```
+/**
+ * Gets recipient info, given a collector id and recipient id
+ * @see https://developer.surveymonkey.com/api/v3/#collectors-id-recipients-id
+ * @param string $collectorId Collector ID
+ * @param string $recipientId Recipient ID
+ * @return array Result
+ */
+public function getRecipient($collectorId, $recipientId){}
+```
+
 API version
 -----------
 v3

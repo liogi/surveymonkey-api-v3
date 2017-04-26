@@ -335,6 +335,30 @@ class SurveyMonkey
     {
         return $this->run('surveys/' . $surveyId . '/collectors', $params, 'GET');
     }
+
+    /**
+     * Gets recipient summaries for all recipients of a message
+     * @see https://developer.surveymonkey.com/api/v3/#collectors-id-messages-id-recipients
+     * @param string $collectorId Collector ID
+     * @param string $collectorId Message ID
+     * @return array Result
+     */
+    public function getMessageRecipients($collectorId, $messageId)
+    {
+        return $this->run("collectors/$collectorId/messages/$messageId/recipients", array(), "GET");
+    }
+
+    /**
+     * Gets recipient info, given a collector id and recipient id
+     * @see https://developer.surveymonkey.com/api/v3/#collectors-id-recipients-id
+     * @param string $collectorId Collector ID
+     * @param string $recipientId Recipient ID
+     * @return array Result
+     */
+    public function getRecipient($collectorId, $recipientId)
+    {
+        return $this->run("collectors/$collectorId/recipients/$recipientId", array(), "GET");
+    }
 }
 
 /**
