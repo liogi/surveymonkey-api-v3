@@ -79,10 +79,6 @@ class SurveyMonkey
      */
     public function __construct($apiKey, $accessToken, $options = array(), $connectionOptions = array())
     {
-        if (empty($apiKey)) {
-            throw new SurveyMonkey_Exception('Missing apiKey');
-        }
-
         if (empty($accessToken)) {
             throw new SurveyMonkey_Exception('Missing accessToken');
         }
@@ -140,7 +136,9 @@ class SurveyMonkey
      */
     protected function buildUri($method)
     {
-        return $this->_protocol . '://' . $this->_hostname . '/' . $this->_version . '/' . $method . '?api_key=' . $this->_apiKey;
+        $apiKeyParam = $this->_apiKey ? 'api_key=' . $this->_apiKey : '';
+
+        return $this->_protocol . '://' . $this->_hostname . '/' . $this->_version . '/' . $method . '?' . $apiKeyParam;
     }
 
     /**
